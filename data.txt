@@ -1,0 +1,10 @@
+# PM Dashboard Data File
+# Format: ID|Name|Description|Status|Priority|Owner|Deadline|Tags|CreatedAt|UpdatedAt
+# Status: planning, active, completed, on-hold
+# Priority: high, medium, low
+
+sample1|モバイルアプリ リニューアル|ユーザーエクスペリエンスを向上させるためのモバイルアプリケーションの全面的なリニューアルプロジェクト|active|high|田中太郎|2024-03-15|Mobile,UX,Design|2024-01-15T00:00:00.000Z|2024-01-15T00:00:00.000Z
+sample2|API統合プラットフォーム|外部サービスとの連携を強化するためのAPI統合プラットフォームの開発|planning|medium|佐藤花子|2024-04-30|API,Integration,Backend|2024-01-20T00:00:00.000Z|2024-01-20T00:00:00.000Z
+sample3|データ分析ダッシュボード|ビジネスインテリジェンスのためのリアルタイムデータ分析ダッシュボード|completed|high|山田次郎|2024-02-28|Analytics,Dashboard,BI|2023-12-01T00:00:00.000Z|2024-01-15T00:00:00.000Z
+sample4|セキュリティ強化プロジェクト|システム全体のセキュリティレベルを向上させるための包括的なプロジェクト|planning|high|鈴木一郎|2024-05-31|Security,Infrastructure,Compliance|2024-01-25T00:00:00.000Z|2024-01-25T00:00:00.000Z
+sample5|カスタマーサポートシステム|顧客満足度向上のための新しいサポートシステムの構築|active|medium|高橋美咲|2024-04-15|Support,CRM,Customer Experience|2024-01-10T00:00:00.000Z|2024-01-20T00:00:00.000Z

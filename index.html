@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM Dashboard - Product Management</title>
+    <meta name="description" content="シンプルで効率的なプロダクト管理ダッシュボード">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-cube"></i>
+                    <h1>PM Dashboard</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" id="addProductBtn">
+                        <i class="fas fa-plus"></i>
+                        新規プロダクト
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Stats Overview -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalProducts">0</h3>
+                            <p>総プロダクト数</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon active">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="activeProducts">0</h3>
+                            <p>アクティブ</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon planning">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="planningProducts">0</h3>
+                            <p>企画中</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon completed">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="completedProducts">0</h3>
+                            <p>完了</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filters and Search -->
+            <section class="controls-section">
+                <div class="controls-container">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="プロダクトを検索...">
+                    </div>
+                    <div class="filters">
+                        <select id="statusFilter">
+                            <option value="">すべてのステータス</option>
+                            <option value="planning">企画中</option>
+                            <option value="active">アクティブ</option>
+                            <option value="completed">完了</option>
+                            <option value="on-hold">保留</option>
+                        </select>
+                        <select id="priorityFilter">
+                            <option value="">すべての優先度</option>
+                            <option value="high">高</option>
+                            <option value="medium">中</option>
+                            <option value="low">低</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Grid -->
+            <section class="products-section">
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be dynamically inserted here -->
+                </div>
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <i class="fas fa-box-open"></i>
+                    <h3>プロダクトがありません</h3>
+                    <p>新しいプロダクトを追加して始めましょう</p>
+                    <button class="btn btn-primary" onclick="openProductModal()">
+                        <i class="fas fa-plus"></i>
+                        最初のプロダクトを追加
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Product Modal -->
+        <div class="modal-overlay" id="productModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 id="modalTitle">新規プロダクト</h2>
+                    <button class="modal-close" onclick="closeProductModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form class="modal-body" id="productForm">
+                    <div class="form-group">
+                        <label for="productName">プロダクト名 *</label>
+                        <input type="text" id="productName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productDescription">説明</label>
+                        <textarea id="productDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productStatus">ステータス *</label>
+                            <select id="productStatus" required>
+                                <option value="planning">企画中</option>
+                                <option value="active">アクティブ</option>
+                                <option value="completed">完了</option>
+                                <option value="on-hold">保留</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="productPriority">優先度 *</label>
+                            <select id="productPriority" required>
+                                <option value="high">高</option>
+                                <option value="medium">中</option>
+                                <option value="low">低</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productOwner">担当者</label>
+                            <input type="text" id="productOwner">
+                        </div>
+                        <div class="form-group">
+                            <label for="productDeadline">期限</label>
+                            <input type="date" id="productDeadline">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productTags">タグ（カンマ区切り）</label>
+                        <input type="text" id="productTags" placeholder="例: Web, Mobile, API">
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeProductModal()">
+                        キャンセル
+                    </button>
+                    <button type="submit" class="btn btn-primary" form="productForm">
+                        <i class="fas fa-save"></i>
+                        保存
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div class="modal-overlay" id="deleteModal">
+            <div class="modal modal-small">
+                <div class="modal-header">
+                    <h2>プロダクトを削除</h2>
+                    <button class="modal-close" onclick="closeDeleteModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>このプロダクトを削除してもよろしいですか？この操作は取り消せません。</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeDeleteModal()">
+                        キャンセル
+                    </button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+                        <i class="fas fa-trash"></i>
+                        削除
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
