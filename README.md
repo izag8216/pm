@@ -4,113 +4,113 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 
-## 概要
+## Overview
 
-HTML/CSS/JSで構成されたシンプルなPM（Product Management）Webアプリ。
-ローカルの `data.txt` にプロダクト情報のCRUD操作を行います。
+A simple PM (Product Management) web application built with HTML/CSS/JS.
+Performs CRUD operations on product information stored in local `data.txt`.
 
-## 特徴
+## Features
 
-- 🎯 **シンプル設計** - HTML/CSS/JSのみで構築
-- 📄 **data.txt管理** - プロダクトデータを行単位で保存
-- 📱 **レスポンシブ** - モダンで使いやすいUI
-- ⚡ **軽量高速** - 複雑な依存関係なし
+- 🎯 **Simple Design** - Built with HTML/CSS/JS only
+- 📄 **data.txt Management** - Stores product data line by line
+- 📱 **Responsive** - Modern and user-friendly UI
+- ⚡ **Lightweight & Fast** - No complex dependencies
 
-## 使用方法
+## Usage
 
-`index.html` をブラウザで開くだけ。
+Simply open `index.html` in your browser.
 
 ```bash
-# リポジトリをクローン
+# Clone the repository
 git clone git@github.com:izag8216/pm.git
 cd pm
 
-# ブラウザで開く
+# Open in browser
 open index.html
 ```
 
-## 機能
+## Features
 
-### プロダクト管理
-- ✅ プロダクトの作成・編集・削除
-- 📊 ステータス管理（企画中・アクティブ・完了・保留）
-- 🎯 優先度設定（高・中・低）
-- 👤 担当者の割り当て
-- 📅 期限の設定
-- 🏷️ タグによる分類
+### Product Management
+- ✅ Create, edit, and delete products
+- 📊 Status management (Planning, Active, Completed, On Hold)
+- 🎯 Priority settings (High, Medium, Low)
+- 👤 Assignee allocation
+- 📅 Deadline setting
+- 🏷️ Tag-based categorization
 
-### 検索・フィルタ
-- 🔍 リアルタイム検索
-- 📊 ステータス別フィルタ
-- 🎯 優先度別フィルタ
+### Search & Filter
+- 🔍 Real-time search
+- 📊 Filter by status
+- 🎯 Filter by priority
 
-### 統計表示
-- 📈 プロダクト数の統計
-- 📊 ステータス別カウント
+### Statistics Display
+- 📈 Product count statistics
+- 📊 Status-based count
 
-## ファイル構成
+## File Structure
 
 ```
 pm/
-├── index.html          # メインHTMLファイル
-├── styles.css          # CSSスタイルシート
-├── app.js             # JavaScriptアプリケーション
-├── data.txt           # データファイル（サンプル）
-└── README.md          # プロジェクト説明
+├── index.html          # Main HTML file
+├── styles.css          # CSS stylesheet
+├── app.js             # JavaScript application
+├── data.txt           # Data file (sample)
+└── README.md          # Project documentation
 ```
 
-## データ構造
+## Data Structure
 
-### data.txt形式
+### data.txt Format
 ```
 ID|Name|Description|Status|Priority|Owner|Deadline|Tags|CreatedAt|UpdatedAt
 ```
 
-### プロダクトオブジェクト
+### Product Object
 ```javascript
 {
-  id: "unique_id",           // ユニークID
-  name: "プロダクト名",        // プロダクト名（必須）
-  description: "説明",        // 詳細説明
-  status: "active",          // ステータス
-  priority: "high",          // 優先度
-  owner: "担当者名",          // 担当者
-  deadline: "2024-03-15",    // 期限（YYYY-MM-DD）
-  tags: ["tag1", "tag2"],    // タグ配列
-  createdAt: "ISO_DATE",     // 作成日時
-  updatedAt: "ISO_DATE"      // 更新日時
+  id: "unique_id",           // Unique ID
+  name: "Product Name",      // Product name (required)
+  description: "Description", // Detailed description
+  status: "active",          // Status
+  priority: "high",          // Priority
+  owner: "Assignee Name",    // Assignee
+  deadline: "2024-03-15",    // Deadline (YYYY-MM-DD)
+  tags: ["tag1", "tag2"],    // Tag array
+  createdAt: "ISO_DATE",     // Creation date
+  updatedAt: "ISO_DATE"      // Update date
 }
 ```
 
-## デモ
+## Demo
 
 - **URL**: https://izag8216.github.io/pm/
 
-## 技術仕様
+## Technical Specifications
 
-- **フロントエンド**: HTML5, CSS3, Vanilla JavaScript
-- **データ保存**: LocalStorage
-- **スタイリング**: CSS Grid, Flexbox, CSS Variables
-- **アイコン**: Font Awesome 6.4.0
-- **フォント**: Inter (Google Fonts)
+- **Frontend**: HTML5, CSS3, Vanilla JavaScript
+- **Data Storage**: LocalStorage
+- **Styling**: CSS Grid, Flexbox, CSS Variables
+- **Icons**: Font Awesome 6.4.0
+- **Font**: Inter (Google Fonts)
 
-## ブラウザサポート
+## Browser Support
 
 - ✅ Chrome 90+
 - ✅ Firefox 88+
 - ✅ Safari 14+
 - ✅ Edge 90+
 
-## キーボードショートカット
+## Keyboard Shortcuts
 
-- `Ctrl + N` - 新規プロダクト作成
-- `Esc` - モーダルを閉じる
+- `Ctrl + N` - Create new product
+- `Esc` - Close modal
 
-## ライセンス
+## License
 
 MIT License
 
-## 作者
+## Author
 
 **izag8216**
 - 🌐 GitHub: [https://github.com/izag8216](https://github.com/izag8216)
