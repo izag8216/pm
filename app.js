@@ -60,11 +60,11 @@ class PMDashboard {
         return [
             {
                 id: this.generateId(),
-                name: 'モバイルアプリ リニューアル',
-                description: 'ユーザーエクスペリエンスを向上させるためのモバイルアプリケーションの全面的なリニューアルプロジェクト',
+                name: 'Mobile App Redesign',
+                description: 'Comprehensive mobile application redesign project to improve user experience',
                 status: 'active',
                 priority: 'high',
-                owner: '田中太郎',
+                owner: 'John Smith',
                 deadline: '2024-03-15',
                 tags: ['Mobile', 'UX', 'Design'],
                 createdAt: new Date('2024-01-15').toISOString(),
@@ -72,11 +72,11 @@ class PMDashboard {
             },
             {
                 id: this.generateId(),
-                name: 'API統合プラットフォーム',
-                description: '外部サービスとの連携を強化するためのAPI統合プラットフォームの開発',
+                name: 'API Integration Platform',
+                description: 'Development of API integration platform to strengthen connectivity with external services',
                 status: 'planning',
                 priority: 'medium',
-                owner: '佐藤花子',
+                owner: 'Jane Doe',
                 deadline: '2024-04-30',
                 tags: ['API', 'Integration', 'Backend'],
                 createdAt: new Date('2024-01-20').toISOString(),
@@ -84,11 +84,11 @@ class PMDashboard {
             },
             {
                 id: this.generateId(),
-                name: 'データ分析ダッシュボード',
-                description: 'ビジネスインテリジェンスのためのリアルタイムデータ分析ダッシュボード',
+                name: 'Data Analytics Dashboard',
+                description: 'Real-time data analytics dashboard for business intelligence',
                 status: 'completed',
                 priority: 'high',
-                owner: '山田次郎',
+                owner: 'Mike Johnson',
                 deadline: '2024-02-28',
                 tags: ['Analytics', 'Dashboard', 'BI'],
                 createdAt: new Date('2023-12-01').toISOString(),
@@ -165,12 +165,12 @@ class PMDashboard {
             // Edit mode
             const product = this.products.find(p => p.id === productId);
             if (product) {
-                modalTitle.textContent = 'プロダクトを編集';
+                modalTitle.textContent = 'Edit Product';
                 this.populateForm(product);
             }
         } else {
             // Add mode
-            modalTitle.textContent = '新規プロダクト';
+            modalTitle.textContent = 'New Product';
             form.reset();
         }
 
@@ -234,7 +234,7 @@ class PMDashboard {
 
         // Validation
         if (!formData.name) {
-            alert('プロダクト名は必須です。');
+            alert('Product name is required.');
             return;
         }
 
@@ -267,7 +267,7 @@ class PMDashboard {
 
         // Show success message
         this.showNotification(
-            this.currentEditId ? 'プロダクトが更新されました' : 'プロダクトが追加されました',
+            this.currentEditId ? 'Product updated successfully' : 'Product added successfully',
             'success'
         );
     }
@@ -285,7 +285,7 @@ class PMDashboard {
                 this.renderProducts();
                 this.closeDeleteModal();
 
-                this.showNotification(`「${productName}」が削除されました`, 'success');
+                this.showNotification(`"${productName}" has been deleted`, 'success');
             }
         }
     }
@@ -347,9 +347,9 @@ class PMDashboard {
     // Create product card HTML
     createProductCard(product) {
         const formattedDate = product.deadline ? 
-            new Date(product.deadline).toLocaleDateString('ja-JP') : '未設定';
+            new Date(product.deadline).toLocaleDateString('en-US') : 'Not set';
         
-        const createdDate = new Date(product.createdAt).toLocaleDateString('ja-JP');
+        const createdDate = new Date(product.createdAt).toLocaleDateString('en-US');
         
         const tagsHtml = product.tags.map(tag => 
             `<span class="tag">${this.escapeHtml(tag)}</span>`
@@ -362,10 +362,10 @@ class PMDashboard {
                         <h3 class="product-title">${this.escapeHtml(product.name)}</h3>
                     </div>
                     <div class="product-actions">
-                        <button class="action-btn edit" onclick="app.openProductModal('${product.id}')" title="編集">
+                        <button class="action-btn edit" onclick="app.openProductModal('${product.id}')" title="Edit">
                             <i class="fas fa-edit"></i>
                         </button>
-                        <button class="action-btn delete" onclick="app.openDeleteModal('${product.id}')" title="削除">
+                        <button class="action-btn delete" onclick="app.openDeleteModal('${product.id}')" title="Delete">
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
@@ -382,11 +382,11 @@ class PMDashboard {
                     ` : ''}
                     <div class="meta-item">
                         <i class="fas fa-calendar"></i>
-                        <span>期限: ${formattedDate}</span>
+                        <span>Deadline: ${formattedDate}</span>
                     </div>
                     <div class="meta-item">
                         <i class="fas fa-clock"></i>
-                        <span>作成: ${createdDate}</span>
+                        <span>Created: ${createdDate}</span>
                     </div>
                 </div>
                 
@@ -407,10 +407,10 @@ class PMDashboard {
     // Get status label in Japanese
     getStatusLabel(status) {
         const labels = {
-            'planning': '企画中',
-            'active': 'アクティブ',
-            'completed': '完了',
-            'on-hold': '保留'
+            'planning': 'Planning',
+            'active': 'Active',
+            'completed': 'Completed',
+            'on-hold': 'On Hold'
         };
         return labels[status] || status;
     }
@@ -418,9 +418,9 @@ class PMDashboard {
     // Get priority label in Japanese
     getPriorityLabel(priority) {
         const labels = {
-            'high': '高',
-            'medium': '中',
-            'low': '低'
+            'high': 'High',
+            'medium': 'Medium',
+            'low': 'Low'
         };
         return labels[priority] || priority;
     }
@@ -489,7 +489,7 @@ class PMDashboard {
         link.click();
         
         URL.revokeObjectURL(url);
-        this.showNotification('データがエクスポートされました', 'success');
+        this.showNotification('Data exported successfully', 'success');
     }
 
     // Import data from JSON
@@ -504,12 +504,12 @@ class PMDashboard {
                     this.filterProducts();
                     this.updateStats();
                     this.renderProducts();
-                    this.showNotification('データがインポートされました', 'success');
+                    this.showNotification('Data imported successfully', 'success');
                 } else {
                     throw new Error('Invalid data format');
                 }
             } catch (error) {
-                this.showNotification('データのインポートに失敗しました', 'error');
+                this.showNotification('Failed to import data', 'error');
             }
         };
         reader.readAsText(file);
